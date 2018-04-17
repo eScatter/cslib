@@ -3,7 +3,7 @@ from noodles.serial.numpy import arrays_to_hdf5 as numpy_registry
 
 from .dataframe import DataFrame, DCS
 from .units import units
-
+from .dcs import DCS as DCS2
 
 class SerQuantity(Serialiser):
     def encode(self, obj, make_rec):
@@ -53,7 +53,9 @@ def registry():
             DataFrame: SerStandardObject(
                 DataFrame, ['data', 'units', 'comments']),
             DCS: SerStandardObject(
-                DCS, ['energy', 'angle', 'cs'])
+                DCS, ['energy', 'angle', 'cs']),
+            DCS2: SerStandardObject(
+                DCS2, ['x', 'y', 'z', 'log'])
         },
         hooks={
             '<quantity>': SerQuantity('<quantity>'),
